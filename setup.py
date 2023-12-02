@@ -23,9 +23,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'past_clock_publisher = ros2_clock_examples.past_clock_publisher:main',
             'fake_temperature_sensor_publisher = ros2_clock_examples.fake_temperature_sensor_publisher:main',
             'fake_temperature_sensor_subscriber = ros2_clock_examples.fake_temperature_sensor_subscriber:main',
+            'past_clock_publisher = ros2_clock_examples.past_clock_publisher:main',
+            'slowed_down_clock_publisher = ros2_clock_examples.slowed_down_clock_publisher:main',
         ],
     },
 )
