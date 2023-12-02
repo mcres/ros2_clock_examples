@@ -29,9 +29,11 @@ def generate_launch_description():
         output='screen'
     )
 
-    clock_publisher = launch_ros.actions.Node(
+    past_clock_publisher = launch_ros.actions.Node(
         package='ros2_clock_examples',
-        executable='clock_publisher',
+        executable='past_clock_publisher',
+        # avoid /clock publisher to depend on /clock
+        parameters=[{'use_sim_time': False}],
         output='screen'
     )
 
@@ -39,5 +41,5 @@ def generate_launch_description():
         use_sim_time_arg,
         fake_temperature_sensor_publisher,
         fake_temperature_sensor_subscriber,
-        clock_publisher
+        past_clock_publisher
     ])
