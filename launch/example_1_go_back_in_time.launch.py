@@ -1,9 +1,9 @@
-"""Launch a fake temperature sensor publisher and subscriber"""
+"""Launch a fake temperature sensor publisher and subscriber using a clock from the past"""
 
 import launch_ros.actions
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, OpaqueFunction
+from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
 
 
