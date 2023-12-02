@@ -14,10 +14,18 @@ class FakeTemperatureSensorPublisher(Node):
     def __init__(self):
         super().__init__('fake_temperature_sensor_publisher')
         self.pub = self.create_publisher(Temperature, 'fake_temperature', 10)
+        
         timer_period = 1.0
-        self.tmr = self.create_timer(timer_period, self.timer_callback)
+        self.create_timer(timer_period, self.timer_callback)
+
+        self.first_time = True
 
     def timer_callback(self):
+        # For some reason, this callback is consecutively triggerd twice at first when using /clock
+        if self.first_time:
+            self.first_time = False
+            return
+
         msg = Temperature()
 
         # If use_sim_time, time is fetched from /clock
